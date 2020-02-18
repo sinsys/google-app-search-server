@@ -9,6 +9,12 @@ const app = express();
 app.use(morgan('common'));
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res
+    .status(200)
+    .send('App is running successfully');
+});
+
 app.get('/apps', (req, res) => {
 
   // Setup our base query params
@@ -128,6 +134,4 @@ app.get('/apps', (req, res) => {
 // http://localhost:8000/apps?search=u&sort=App&genre=Action
 // Expected alphabetical sort with 3 entries with an Action genre containing the letter 'u'
 
-app.listen(8000, () => {
-  console.log('Server started on PORT 8000');
-});
+module.exports = app;
